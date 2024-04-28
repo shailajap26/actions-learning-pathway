@@ -52,9 +52,16 @@ jobs:
         with:
           static_site_generator: next
       - run: npm install
-      - run: npm deploy
+      - run: npm run build
+
+      - name: upload_artificats
+        uses: actions/upload-pages-artifact@v1
+        with: 
+          path: "./out"
     
-    
+      - name: deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
     
    
          
